@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class WebDriverManager {
+  //Class that manages webdriver creation, configuration and closing. Work in progress.
 
   @Autowired
   private WebDriver driver;

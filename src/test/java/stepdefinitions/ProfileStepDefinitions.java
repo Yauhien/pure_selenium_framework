@@ -1,36 +1,57 @@
 package stepdefinitions;
 
-import com.taf.config.TestConfig;
+import com.taf.forms.HeaderForm;
 import com.taf.pages.ProfilePage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 
 @Log4j
-@ContextConfiguration(classes = {TestConfig.class})
 public class ProfileStepDefinitions extends BaseTest {
 
   @Autowired
   private ProfilePage profilePage;
 
-  @When("user opens loan page")
-  public void openLoanPage() {
-    log.info("[Step] user opens loan page " + url);
-    browser.windowMaximize();
-    browser.openUrl(url);
+  @Autowired
+  private HeaderForm headerForm;
+
+  @Then("new user's profile has no superpowers")
+  public void checkNewUserProfileHasNoSuperpowers() {
+    log.info("[Step] new user's profile has no superpowers");
+    assertTrue(profilePage.getPowersMessage().contains("You have no super powers yet"));
   }
 
-  @When("user activates {string} promocode")
-  public void activatePromocode(String promocode) {
-    log.info("[Step] user activates " + promocode + " promocode");
-    profilePage.activatePromocode(promocode);
+  @When("user opens profile")
+  public void openProfile() {
+    headerForm.click(headerForm.getProfileLink());
   }
 
-  @Then("total repayable sum is decreased by {string}")
-  public void checkTotalRepayableSumIsDescriese(String discount) {
-    log.info("[Step] total repayable sum is descriesed by  " + discount);
-    assertEquals(profilePage.calculateTotalWithDiscount(discount), profilePage.getTotalWithDiscountLocator());
+  @Then("admin superpower is displayed")
+  public void checkAdminSuperpower() {
+    log.info("[Step] admin superpower is displayed");
+    //Don't know what is superpower. May be an important functionality
+    assertTrue(profilePage.getPowersMessage().contains("Change the course of a waterfall."));
+  }
+
+  @Then("the users table is displayed")
+  public void checkUsersTableIsNotEmpty() {
+    log.info("[Step] the users table is displayed");
+    //Hard-coded data. Not enough requirements to check the contents
+    assertNotEquals(profilePage.getUsersTable().getSize(), 0);
+  }
+
+  @Then("dev superpower is displayed")
+  public void checkDevSuperpowerDisplayed() {
+    log.info("[Step] dev superpower is displayed");
+    //Don't know what is superpower. May be an important functionality
+    assertTrue(profilePage.getPowersMessage().contains("Debug a repellent factory storage."));
+  }
+
+  @Then("tester superpower is displayed")
+  public void checkTesterSuperpowerDisplayed() {
+    log.info("[Step] tester superpower is displayed");
+    //Don't know what is superpower. May be an important functionality
+    assertTrue(profilePage.getPowersMessage().contains("Voltage AND Current."));
   }
 }
