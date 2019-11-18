@@ -3,10 +3,12 @@
 ##Framework stack
 
 * Java 1.8
+* Selenium webdriver
 * Maven (Build automation tool)
 * Cucumber (BDD test tool)
 * JUnit (Unit testing framework and runner)
 * Spring (Application and IoC framework)
+* Log4j (Loggin tool)
 
 ## Prerequisites
 You need to have following installed:
