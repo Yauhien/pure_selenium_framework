@@ -1,4 +1,4 @@
-# WAES Heroes UI Framework
+# Pure selenium UI Framework
 
 ##Framework stack
 
