@@ -15,6 +15,7 @@ public class CommonStepDefinitions extends BaseTest{
   public void navigateTo(String endpoint) {
     log.info("[Step] user navigates to " + endpoint);
     browser.openUrl(url + ApplicationsPages.valueOf(endpoint).getField());
+    browser.windowMaximize();
   }
 
   @Then("{string} is displayed")
