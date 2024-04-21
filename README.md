@@ -2,7 +2,7 @@
 
 ##Framework stack
 
-* Java 1.8
+* Java 11 or higher
 * Selenium webdriver
 * Maven (Build automation tool)
 * Cucumber (BDD test tool)
@@ -13,10 +13,9 @@
 ## Prerequisites
 You need to have following installed:
 
-* [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* [Chrome Browser version 78](https://www.google.ru/intl/ru/chrome/?brand=CHBD&gclid=Cj0KCQiAk7TuBRDQARIsAMRrfUap-KmwPytbf2WHhHReKbNfbb2MfZalybYnzj-ZkyWLHiFj6tGvVtAaAuQEEALw_wcB&gclsrc=aw.ds)_
-* [Firefox](https://www.mozilla.org/ru/firefox/new/)
-* [Selenium Webdriver version 78](https://chromedriver.storage.googleapis.com/index.html?path=78.0.3904.70/)
+* [Java latest]([http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](https://www.openlogic.com/openjdk-downloads))
+* [Chrome Browser latest](https://www.google.com/chrome/)_
+* [Firefox](https://www.mozilla.org/en-US/firefox/new/)
 * [Apache Maven](https://maven.apache.org/)
 
 #Test configurations
