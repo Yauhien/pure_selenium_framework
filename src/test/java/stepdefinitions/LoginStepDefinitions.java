@@ -3,10 +3,10 @@ package stepdefinitions;
 import com.taf.forms.HeaderForm;
 import com.taf.pages.LandingPage;
 import com.taf.pages.LoginPage;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Then;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.When;
 
 @Log4j
 public class LoginStepDefinitions extends BaseTest {
