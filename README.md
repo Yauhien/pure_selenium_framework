@@ -13,12 +13,12 @@
 ## Prerequisites
 You need to have following installed:
 
-* [Java latest]([http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](https://www.openlogic.com/openjdk-downloads))
-* [Chrome Browser latest](https://www.google.com/chrome/)_
+* [Java latest](https://www.openlogic.com/openjdk-downloads)
+* [Chrome Browser latest](https://www.google.com/chrome/)
 * [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-* [Apache Maven](https://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/download.cgi)
 
-#Test configurations
+## Test configurations
 Framework properties can be found in application.properties.
 
 Chrome webdriver is selected by default. Additionally firefox browser support was added.
@@ -35,10 +35,9 @@ mvn clean test -Dcucumber.options="--tags @all"
 
 mvn clean test -Dcucumber.options="--tags @wip"
 
-!Note to run the tests in headleass mode,
- To run the tests in headless mode - TestConfig option "//options.addArguments("--headless");" should be uncommened
+In order to run the tests in headless mode - TestConfig option "//options.addArguments("--headless");" should be uncommened
  
- ##Results
+ ## Results
  
  Test results report can be found here "target/cucumber-pretty/index.html" 
 
