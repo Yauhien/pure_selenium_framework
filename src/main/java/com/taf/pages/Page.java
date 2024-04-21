@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.PostConstruct;
 import java.time.Duration;
 import java.util.List;
 
@@ -28,7 +27,6 @@ public abstract class Page {
 
   private WebDriverWait webDriverWait;
 
-  @PostConstruct
   private void init() {
     webDriverWait = new WebDriverWait(webDriverManager.getDriver(), 10);
   }

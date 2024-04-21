@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.time.Month;
 import java.time.format.TextStyle;
 import java.util.Locale;
@@ -41,7 +40,6 @@ public class RegistrationPage extends Page{
   @FindBy(id="submit_button")
   private WebElement submitButton;
 
-  @PostConstruct
   public void init() {
     PageFactory.initElements(webDriverManager.getDriver(), this);
   }

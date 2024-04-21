@@ -3,8 +3,8 @@ package stepdefinitions;
 import com.taf.enums.ApplicationVariables;
 import com.taf.forms.HeaderForm;
 import com.taf.pages.DetailsPage;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 

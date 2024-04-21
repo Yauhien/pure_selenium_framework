@@ -15,7 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Log4j
 @Configuration
-@ComponentScan("com.taf")
+@ComponentScan("com")
 @PropertySource("classpath:application.properties")
 public class TestConfig {
   //Class for webdriver path and type configuration.

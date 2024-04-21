@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
 @Component
 @Getter
 public class HeaderForm extends Page {
@@ -22,7 +20,6 @@ public class HeaderForm extends Page {
   @FindBy(xpath = "//div[@id='status']//a")
   private WebElement logOutLink;
 
-  @PostConstruct
   public void init() {
     PageFactory.initElements(webDriverManager.getDriver(), this);
   }

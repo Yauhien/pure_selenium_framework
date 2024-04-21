@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
 @Component
 @Getter
 public class LoginPage extends Page {
@@ -25,7 +23,6 @@ public class LoginPage extends Page {
   private static String VALIDATION_MESSAGE = "//div[@id='status']/p";
   private static String PAGE_NOT_FOUND_MESSAGE = "//pre";
 
-  @PostConstruct
   public void init() {
     PageFactory.initElements(webDriverManager.getDriver(), this);
   }
