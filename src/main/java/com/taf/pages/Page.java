@@ -4,12 +4,7 @@ import com.taf.core.browser.WebDriverManager;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,7 +23,7 @@ public abstract class Page {
   private WebDriverWait webDriverWait;
 
   private void init() {
-    webDriverWait = new WebDriverWait(webDriverManager.getDriver(), 10);
+    webDriverWait = new WebDriverWait(webDriverManager.getDriver(), Duration.ofSeconds(10));
   }
 
   public void click(WebElement element) {
@@ -59,7 +54,7 @@ public abstract class Page {
         .withTimeout(Duration.ofSeconds(30))
         .pollingEvery(Duration.ofSeconds(5))
         .ignoring(NoSuchElementException.class)
-        .ignoring(ElementNotVisibleException.class)
+        .ignoring(ElementNotInteractableException.class)
         .ignoring(WebDriverException.class);
     return fluentWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
   }

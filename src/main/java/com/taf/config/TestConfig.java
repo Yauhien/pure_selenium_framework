@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,81 +17,10 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan("com")
 @PropertySource("classpath:application.properties")
 public class TestConfig {
-  //Class for webdriver path and type configuration.
-  //Additionally browser options and system variables are set
-
-
-  @Value("${driver.path}")
-  private String driverPath;
+  //Class for browser specific options. Selenium manager takes care of driver download
 
   @Value("${browser.type}")
   private String driverType;
-
-  private static String OS = System.getProperty("os.name").toLowerCase();
-
-  private void setChromeSystemProperties(){
-    String fullDriverPath = "";
-
-    if (isWindows()) {
-      fullDriverPath = driverPath
-          .concat("windows")
-          .concat(System.getProperty("file.separator"))
-          .concat("chromedriver.exe");
-    } else if (isLinux()) {
-      fullDriverPath = driverPath
-          .concat("linux")
-          .concat(System.getProperty("file.separator"))
-          .concat("chromedriver");
-    } else if (isMac()) {
-      fullDriverPath = driverPath
-          .concat("mac")
-          .concat(System.getProperty("file.separator"))
-          .concat("chromedriver");
-    } else {
-      throw new RuntimeException("driverPath cannot be constructed for " + OS);
-    }
-
-    System.setProperty("webdriver.chrome.driver", fullDriverPath);
-    System.setProperty("webdriver.chrome.logfile", "./chromedriver.log");
-    System.setProperty("webdriver.chrome.verboseLogging", "true");
-  }
-
-  private void setFirefoxSystemProperties(){
-    String fullDriverPath = "";
-
-    if (isWindows()) {
-      fullDriverPath = driverPath
-          .concat("windows")
-          .concat(System.getProperty("file.separator"))
-          .concat("geckodriver.exe");
-    } else if (isLinux()) {
-      fullDriverPath = driverPath
-          .concat("linux")
-          .concat(System.getProperty("file.separator"))
-          .concat("geckodriver");
-    } else if (isMac()) {
-      fullDriverPath = driverPath
-          .concat("mac")
-          .concat(System.getProperty("file.separator"))
-          .concat("geckodriver");
-    } else {
-      throw new RuntimeException("driverPath cannot be constructed for " + OS);
-    }
-
-    System.setProperty("webdriver.gecko.driver", fullDriverPath);
-  }
-
-  private static boolean isWindows() {
-    return (OS.contains("win"));
-  }
-
-  private static boolean isMac() {
-    return (OS.contains("mac"));
-  }
-
-  private static boolean isLinux() {
-    return (OS.contains("nix") || OS.contains("nux") || OS.contains("aix"));
-  }
 
   public ChromeOptions getChromeOptions() {
     ChromeOptions options = new ChromeOptions();
@@ -103,13 +31,12 @@ public class TestConfig {
     options.addArguments("--disable-dev-shm-usage");
     //options.addArguments("--headless");
     options.addArguments("--window-size=1920,1080");
-    //options.setExperimentalOption("prefs", getPrefs());
     return options;
   }
 
   private void setCapabilities() {
-    DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-    capabilities.setCapability(ChromeOptions.CAPABILITY, getChromeOptions());
+    ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.setCapability(ChromeOptions.CAPABILITY, getChromeOptions());
   }
 
   @Bean
@@ -117,10 +44,8 @@ public class TestConfig {
     WebDriver driver = null;
 
     if (driverType.equals("firefox")) {
-      setFirefoxSystemProperties();
       driver = new FirefoxDriver();
     } else {
-      setChromeSystemProperties();
       setCapabilities();
       ChromeDriverService driverService = ChromeDriverService.createDefaultService();
       driver = new ChromeDriver(driverService, getChromeOptions());
