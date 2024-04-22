@@ -1,6 +1,6 @@
 # Pure selenium UI Framework
 
-##Framework stack
+## Framework stack
 
 * Java 11 or higher
 * Selenium webdriver
