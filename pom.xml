@@ -11,7 +11,7 @@
     <properties>
         <cucumber.version>7.17.0</cucumber.version>
         <selenium.version>4.19.1</selenium.version>
-        <org.springframework.version>6.1.6</org.springframework.version>
+        <org.springframework.version>6.1.14</org.springframework.version>
     </properties>
 
     <profiles>
